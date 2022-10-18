@@ -57,6 +57,15 @@ public class MyDbHelper extends SQLiteOpenHelper {
         return id;
     }
 
+    public Boolean checkusernamepassword(String user, String password){
+        SQLiteDatabase MyDB = this.getWritableDatabase();
+        Cursor cursor = MyDB.rawQuery("Select * from user where user = ? and password = ?", new String[] {user,password});
+        if(cursor.getCount()>0)
+            return true;
+        else
+            return false;
+    }
+
     //Inserta datos a la base de datos
     public long insertRecord(String name, String regis, String cate, String moda, String moda_ate, String deli, String produc, String dire, String loca,
                              String zona, String phone, String face, String insta, String linke, String descri, String image, String addedTime, String updatedTime){
