@@ -11,4 +11,5 @@
     <string name="menu_home">Inicio</string>
     <string name="menu_gallery">¿Quienes Somos?</string>
     <string name="menu_slideshow">¿Que Hacemos?</string>
+    <string name="menu_contacto">Contacto</string>
 </resources>

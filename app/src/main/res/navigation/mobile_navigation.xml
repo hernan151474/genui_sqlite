@@ -22,4 +22,9 @@
         android:name="com.example.genui_sqlite.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
+    <fragment
+        android:id="@+id/nav_contacto"
+        android:name="com.example.genui_sqlite.ui.contacto.ContactoFragment"
+        android:label="fragment_contacto"
+        tools:layout="@layout/fragment_contacto" />
 </navigation>
