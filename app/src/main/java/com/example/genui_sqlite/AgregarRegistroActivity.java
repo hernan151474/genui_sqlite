@@ -163,6 +163,7 @@ public class AgregarRegistroActivity extends AppCompatActivity {
         modaateEt.setEnabled(false);
         deliEt.setEnabled(false);
         producEt.setEnabled(false);
+        regis="0";
 
     }
 
@@ -181,12 +182,12 @@ public class AgregarRegistroActivity extends AppCompatActivity {
         modaateEt.setEnabled(true);
         deliEt.setEnabled(true);
         producEt.setEnabled(true);
+        regis="1";
     }
 
     private void inputData(){
         //get data
         name = ""+nameEt.getText().toString().trim();
-        regis = ""+radio_grup.getCheckedRadioButtonId();
         cate = ""+cateEt.getSelectedItem().toString().trim();
         moda = ""+modaEt.getSelectedItem().toString().trim();
         moda_ate= ""+modaateEt.getSelectedItem().toString().trim();

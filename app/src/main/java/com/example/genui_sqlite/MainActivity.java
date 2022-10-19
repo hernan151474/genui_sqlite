@@ -56,4 +56,9 @@ public class MainActivity extends AppCompatActivity {
         Intent registrar = new Intent(this, AgregarUser.class);
         startActivity(registrar);
     }
+
+    public void Recuperar(View view){
+        Intent recuperar = new Intent(this, RecuperarPassword.class);
+        startActivity(recuperar);
+    }
 }
