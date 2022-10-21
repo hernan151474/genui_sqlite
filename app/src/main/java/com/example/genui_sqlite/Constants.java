@@ -14,6 +14,8 @@ public class Constants {
     public static final String C_USER = "USER";
     public static final String C_PASSWORD = "PASSWORD";
     public static final String C_ID = "ID";
+    public static final String C_IDUSER = "IDUSER";
+    public static final String C_ID_USER = "ID_USER";
     public static final String C_NAME = "NOMBRE";
     public static final String C_REGIS = "REGISTRO";
     public static final String C_CATE= "CATEGORIA";
@@ -36,13 +38,14 @@ public class Constants {
 
     //Crea la tabla Query
     public static final String CREATE_USER = "CREATE TABLE " + TABLE_USER +"("
-            +C_ID + " INTEGER PRIMARY KEY,"
-            +C_USER + " TEXT,"
+            +C_IDUSER + " INTEGER PRIMARY KEY,"
+            +C_USER + " TEXT UNIQUE,"
             +C_PASSWORD+ " TEXT"
             +")";
 
     public static  final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME +"("
             + C_ID+ " INTEGER PRIMARY KEY,"
+            + C_ID_USER+ " INTEGER,"
             + C_NAME+ " TEXT,"
             + C_REGIS+ " TEXT,"
             + C_CATE+ " TEXT,"
@@ -60,6 +63,6 @@ public class Constants {
             + C_DESCRI+ " TEXT,"
             + C_IMAGE+ " TEXT,"
             + C_ADDED_TIMESTAMP+ " TEXT,"
-            + C_UPDATED_TIMESTAMP+ " TEXT"
-            + ")";
+            + C_UPDATED_TIMESTAMP+ " TEXT,"
+            + " FOREIGN KEY(" +C_ID_USER+ ") REFERENCES " +TABLE_USER+ "(" +C_IDUSER+"))";
 }

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
 
+import com.example.genui_sqlite.DB.MyDbHelper;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
@@ -21,10 +22,12 @@ public class Home extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityHomeBinding binding;
+    MyDbHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        dbHelper = new MyDbHelper(this);
 
         binding = ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -70,6 +73,7 @@ public class Home extends AppCompatActivity {
     }
 
     public void registrar_genui (View view){
+        Object consulta = dbHelper.ConsultaUser();
         Intent registrar_genui = new Intent (this, AgregarRegistroActivity.class);
         startActivity(registrar_genui);
     }

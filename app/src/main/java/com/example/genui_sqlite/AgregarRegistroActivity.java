@@ -65,7 +65,7 @@ public class AgregarRegistroActivity extends AppCompatActivity {
     private String [] storagePermissions;// solo almacenamiento
     // variables (constain datos para guardar)
     private Uri imageUri;
-    private String name, regis, cate, moda, moda_ate, deli, produc, dire, loca, zona, phone, face, insta, linke, descri;
+    private String name, id_user, regis, cate, moda, moda_ate, deli, produc, dire, loca, zona, phone, face, insta, linke, descri, consulta;
 
     //db helper
     private MyDbHelper dbHelper;
@@ -129,6 +129,7 @@ public class AgregarRegistroActivity extends AppCompatActivity {
         deliEt.setEnabled(false);
         producEt.setEnabled(false);
 
+
         //Inicializar BD Helper
         dbHelper = new MyDbHelper(this);
 
@@ -164,7 +165,7 @@ public class AgregarRegistroActivity extends AppCompatActivity {
         deliEt.setEnabled(false);
         producEt.setEnabled(false);
         regis="0";
-
+        id_user=consulta;
     }
 
 
@@ -183,10 +184,12 @@ public class AgregarRegistroActivity extends AppCompatActivity {
         deliEt.setEnabled(true);
         producEt.setEnabled(true);
         regis="1";
+        id_user=consulta;
     }
 
     private void inputData(){
         //get data
+
         name = ""+nameEt.getText().toString().trim();
         cate = ""+cateEt.getSelectedItem().toString().trim();
         moda = ""+modaEt.getSelectedItem().toString().trim();
@@ -207,6 +210,7 @@ public class AgregarRegistroActivity extends AppCompatActivity {
         String timestamp = ""+System.currentTimeMillis();
         long id = dbHelper.insertRecord(
                 ""+name,
+                ""+id_user,
                 ""+regis,
                 ""+cate,
                 ""+moda,

@@ -39,7 +39,7 @@ public class AgregarUser extends AppCompatActivity {
             if (!email_resgitrar.isEmpty() && password_registrar.isEmpty() && password_confirmar.isEmpty()) {
                 Toast.makeText(this, "Ingrese una contraseña y confirme contraseña!!!", Toast.LENGTH_SHORT).show();
             } else {
-                if (password_registrar.contentEquals(password_confirmar)) {
+                if (!email_resgitrar.isEmpty() && password_registrar.contentEquals(password_confirmar)) {
                     user = "" + registrar_user.getText().toString().trim();
                     password = "" + registrar_password.getText().toString().trim();
                     dbHelper.insertUser(

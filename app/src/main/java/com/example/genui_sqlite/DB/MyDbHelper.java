@@ -66,8 +66,34 @@ public class MyDbHelper extends SQLiteOpenHelper {
             return false;
     }
 
+    //consultar si existe el user
+    public Boolean checkusername(String user) {
+        SQLiteDatabase MyDB = this.getWritableDatabase();
+        Cursor cursor = MyDB.rawQuery("Select * from user where user = ?", new String[]{user});
+        if (cursor.getCount() > 0)
+            return true;
+        else
+            return false;
+    }
+    public void onUpgradeUser (String user, String password){
+        SQLiteDatabase db =this.getWritableDatabase();
+        db.execSQL("UPDATE USER SET PASSWORD= ? ",new String[]{password});
+        ContentValues values = new ContentValues();
+        values.put(Constants.C_PASSWORD, password);
+        db.close();
+    }
+
+
+    public Object ConsultaUser (){
+        String selectQuery = " SELECT " + Constants.C_IDUSER + " FROM " + Constants.TABLE_USER + " WHERE " + Constants.C_USER + "=" +Constants.C_USER+"";
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        Object id=null;
+        return id;
+    }
+
     //Inserta datos a la base de datos
-    public long insertRecord(String name, String regis, String cate, String moda, String moda_ate, String deli, String produc, String dire, String loca,
+    public long insertRecord(String name, String id_user, String regis, String cate, String moda, String moda_ate, String deli, String produc, String dire, String loca,
                              String zona, String phone, String face, String insta, String linke, String descri, String image, String addedTime, String updatedTime){
 
         //get databse grabable porque queremos escribir datos
@@ -81,6 +107,7 @@ public class MyDbHelper extends SQLiteOpenHelper {
 
         // inserta datos
         values.put(Constants.C_NAME, name);
+        values.put(Constants.C_ID_USER, id_user);
         values.put(Constants.C_REGIS, regis);
         values.put(Constants.C_CATE, cate);
         values.put(Constants.C_MODA, moda);
@@ -133,7 +160,8 @@ public class MyDbHelper extends SQLiteOpenHelper {
             do {
 
                 @SuppressLint("Range") ModelRecord modelRecord = new ModelRecord(
-                        ""+cursor.getInt(cursor.getColumnIndex(Constants.C_ID)),
+                        ""+cursor.getString(cursor.getColumnIndex(Constants.C_ID)),
+                        ""+cursor.getInt(cursor.getColumnIndex(Constants.C_ID_USER)),
                         ""+cursor.getString(cursor.getColumnIndex(Constants.C_NAME)),
                         ""+cursor.getString(cursor.getColumnIndex(Constants.C_REGIS)),
                         ""+cursor.getString(cursor.getColumnIndex(Constants.C_CATE)),
@@ -185,6 +213,7 @@ public class MyDbHelper extends SQLiteOpenHelper {
 
                 @SuppressLint("Range") ModelRecord modelRecord = new ModelRecord(
                         ""+cursor.getInt(cursor.getColumnIndex(Constants.C_ID)),
+                        ""+cursor.getString(cursor.getColumnIndex(Constants.C_ID_USER)),
                         ""+cursor.getString(cursor.getColumnIndex(Constants.C_NAME)),
                         ""+cursor.getString(cursor.getColumnIndex(Constants.C_REGIS)),
                         ""+cursor.getString(cursor.getColumnIndex(Constants.C_CATE)),
@@ -247,6 +276,7 @@ public class MyDbHelper extends SQLiteOpenHelper {
 
                 @SuppressLint("Range") ModelRecord modelRecord = new ModelRecord(
                         ""+cursor.getInt(cursor.getColumnIndex(Constants.C_ID)),
+                        ""+cursor.getString(cursor.getColumnIndex(Constants.C_ID_USER)),
                         ""+cursor.getString(cursor.getColumnIndex(Constants.C_NAME)),
                         ""+cursor.getString(cursor.getColumnIndex(Constants.C_REGIS)),
                         ""+cursor.getString(cursor.getColumnIndex(Constants.C_CATE)),

@@ -12,7 +12,9 @@ import android.widget.Toast;
 import com.example.genui_sqlite.DB.MyDbHelper;
 
 public class MainActivity extends AppCompatActivity {
-    EditText usuario_inicio, password_inicio;
+    EditText usuario_inicio;
+    EditText password_inicio;
+    String consulta;
     Button login;
     MyDbHelper dbHelper;
 
@@ -27,14 +29,15 @@ public class MainActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String usuario, contraseña;
                 String user = usuario_inicio.getText().toString();
                 String password = password_inicio.getText().toString();
                 if(user.equals("")||password.equals(""))
                     Toast.makeText(MainActivity.this, "Por favor, introduzca todos los campos", Toast.LENGTH_SHORT).show();
                 else{
                     Boolean checkuserpass = dbHelper.checkusernamepassword(user, password);
+
                     if(checkuserpass==true){
+                        Object consulta = dbHelper.ConsultaUser();
                         Toast.makeText(MainActivity.this, "Inicio de sesión con éxito", Toast.LENGTH_SHORT).show();
                         Intent intent  = new Intent(getApplicationContext(), Home.class);
                         startActivity(intent);

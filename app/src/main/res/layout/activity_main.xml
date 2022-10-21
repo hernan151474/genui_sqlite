@@ -39,6 +39,8 @@
         android:ems="10"
         android:hint="Usuario"
         android:inputType="textEmailAddress"
+        android:textColor="#000000"
+        android:textColorHint="#9E9898"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView47" />
@@ -51,6 +53,8 @@
         android:ems="10"
         android:hint="Contraseña"
         android:inputType="textPassword"
+        android:textColor="#000000"
+        android:textColorHint="#9E9898"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/usuario_inicio" />
