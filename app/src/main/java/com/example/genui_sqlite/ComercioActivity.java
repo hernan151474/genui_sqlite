@@ -2,21 +2,27 @@ package com.example.genui_sqlite;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
+import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toolbar;
+import android.widget.TextView;
 
 import com.example.genui_sqlite.DB.MyDbHelper;
+import com.example.genui_sqlite.databinding.ActivityHomeBinding;
+import com.google.android.material.navigation.NavigationView;
 
 public class ComercioActivity extends AppCompatActivity {
 
     private RecyclerView recordsRv;
+    TextView count;
+    int cantidad=0;
 
 
 
@@ -26,19 +32,19 @@ public class ComercioActivity extends AppCompatActivity {
     ActionBar actionBar;
 
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comercio);
         recordsRv = findViewById(R.id.recordsRv);
+        count = (TextView) findViewById(R.id.count1);
         int numberOfColumns = 2;
         recordsRv.setLayoutManager(new GridLayoutManager(this, numberOfColumns));
         //Inicializamos db helper Clase
         dbHelper = new MyDbHelper(this);
 
-        //Inicializacion ActionBar
-        actionBar = getSupportActionBar();
-        actionBar.setTitle("Registros");
+
 
         loadRecords();
     }
@@ -50,7 +56,9 @@ public class ComercioActivity extends AppCompatActivity {
         recordsRv.setAdapter(adapterRecord);
 
         //Establecer el numero de Registros
-        actionBar.setSubtitle("Total: "+dbHelper.getRecordsCount());
+
+        cantidad=dbHelper.getRecordsCount();
+        count.setText(String.valueOf(cantidad));
     }
 
     @Override

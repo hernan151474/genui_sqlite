@@ -2,12 +2,12 @@ package com.example.genui_sqlite;
 
 public class ModelRecord {
     //Variables
-    String user, password, id,id_user, name, regis, cate, moda, moda_ate, deli, produc, dire, loca, zona, phone, face, insta, linke, descri, image, addedTime, updatedTime;
+    String user, password, id,id_user, name, regis, cate, moda, moda_ate, deli, produc, dire, loca, zona, phone, face, insta, linke, descri, image, estado, addedTime, updatedTime;
 
     //Constructor
 
     public ModelRecord(String id, String id_user, String name, String regis, String cate, String moda, String moda_ate, String deli, String produc, String dire, String loca,
-                       String zona, String phone, String face, String insta, String linke, String descri, String image, String addedTime, String updatedTime) {
+                       String zona, String phone, String face, String insta, String linke, String descri, String image, String estado, String addedTime, String updatedTime) {
         this.id = id;
         this.id_user= id_user;
         this.name = name;
@@ -26,6 +26,7 @@ public class ModelRecord {
         this.linke = linke;
         this.descri =descri;
         this.image = image;
+        this.estado= estado;
         this.addedTime = addedTime;
         this.updatedTime = updatedTime;
 
@@ -38,6 +39,10 @@ public class ModelRecord {
 
     //Getter y Setter
 
+
+    public String getEstado() {return estado;}
+
+    public void setEstado(String estado) {this.estado = estado;}
 
     public String getId_user() {
         return id_user;

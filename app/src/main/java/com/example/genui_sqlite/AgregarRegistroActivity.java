@@ -65,7 +65,25 @@ public class AgregarRegistroActivity extends AppCompatActivity {
     private String [] storagePermissions;// solo almacenamiento
     // variables (constain datos para guardar)
     private Uri imageUri;
-    private String name, id_user, regis, cate, moda, moda_ate, deli, produc, dire, loca, zona, phone, face, insta, linke, descri, consulta;
+    private String name;
+    private int id_user;
+    private String regis;
+    private String cate;
+    private String moda;
+    private String moda_ate;
+    private String deli;
+    private String produc;
+    private String dire;
+    private String loca;
+    private String zona;
+    private String phone;
+    private String face;
+    private String insta;
+    private String linke;
+    private String descri;
+    private String estado;
+
+    int consulta;
 
     //db helper
     private MyDbHelper dbHelper;
@@ -73,6 +91,8 @@ public class AgregarRegistroActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agregar_registro);
+        Bundle bundle= getIntent().getExtras();
+        consulta=bundle.getInt("iduser");
         radio_grup = (RadioGroup) findViewById(R.id.radio_grup);
         radioprofe=(RadioButton) findViewById(R.id.radioprofe);
         radioempre=(RadioButton) findViewById(R.id.radioempre);
@@ -165,7 +185,7 @@ public class AgregarRegistroActivity extends AppCompatActivity {
         deliEt.setEnabled(false);
         producEt.setEnabled(false);
         regis="0";
-        id_user=consulta;
+        id_user= consulta;
     }
 
 
@@ -204,6 +224,7 @@ public class AgregarRegistroActivity extends AppCompatActivity {
         insta = ""+instaEt.getText().toString().trim();
         linke = ""+linkeEt.getText().toString().trim();
         descri = ""+descriEt.getText().toString().trim();
+        estado="1";
 
 
         //guarda en la base de datos
@@ -226,6 +247,7 @@ public class AgregarRegistroActivity extends AppCompatActivity {
                 ""+linke,
                 ""+descri,
                 ""+imageUri,
+                ""+estado,
                 ""+timestamp,
                 ""+timestamp
         );

@@ -11,7 +11,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Genui_sqlite"
+        android:theme="@style/Theme.Genui_sqlite.NoActionBar"
         tools:targetApi="31">
         <activity
             android:name=".SplashScreenActivity"
@@ -76,7 +76,8 @@
         </activity>
         <activity
             android:name=".ComercioActivity"
-            android:exported="false">
+            android:exported="false"
+            android:theme="@style/Theme.Genui_sqlite.NoActionBar">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -106,7 +107,7 @@
             android:name=".Home"
             android:exported="false"
             android:label="@string/title_activity_home"
-            android:theme="@style/Theme.Genui_sqlite.NoActionBar" />
+            android:theme="@style/Theme.Genui_sqlite.NoActionBar"/>
         <activity
             android:name=".MainActivity"
             android:exported="false">

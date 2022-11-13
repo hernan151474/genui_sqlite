@@ -10,7 +10,7 @@
 
 
     <androidx.cardview.widget.CardView
-        android:layout_width="150dp"
+        android:layout_width="match_parent"
         android:layout_height="210dp"
         android:layout_marginTop="7dp"
         app:cardElevation="1dp"
@@ -60,11 +60,11 @@
 
     <View
         android:id="@+id/view9"
-        android:layout_width="400dp"
+        android:layout_width="match_parent"
         android:layout_height="6dp"
-        android:layout_marginStart="-170dp"
+        android:layout_marginStart="-410dp"
         android:layout_marginTop="225dp"
-        android:background="@drawable/linea_division"
+        android:background="@color/purple_200"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"

@@ -27,4 +27,9 @@
         android:name="com.example.genui_sqlite.ui.contacto.ContactoFragment"
         android:label="fragment_contacto"
         tools:layout="@layout/fragment_contacto" />
+    <fragment
+        android:id="@+id/nav_posteos"
+        android:name="com.example.genui_sqlite.fragment_misposteos"
+        android:label="fragment_misposteos"
+        tools:layout="@layout/fragment_misposteos" />
 </navigation>

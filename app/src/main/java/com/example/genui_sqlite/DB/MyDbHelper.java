@@ -84,17 +84,19 @@ public class MyDbHelper extends SQLiteOpenHelper {
     }
 
 
-    public Object ConsultaUser (){
-        String selectQuery = " SELECT " + Constants.C_IDUSER + " FROM " + Constants.TABLE_USER + " WHERE " + Constants.C_USER + "=" +Constants.C_USER+"";
+    public int ConsultaUser (){
+        int id = 0;
+        String selectQuery = " SELECT " + Constants.C_IDUSER + " FROM " + Constants.TABLE_USER + " WHERE " + Constants.C_USER + " = " + Constants.C_USER+"";
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
-        Object id=null;
+        cursor.moveToFirst();
+        id=cursor.getInt(cursor.getColumnIndex(Constants.C_IDUSER));
         return id;
     }
 
     //Inserta datos a la base de datos
     public long insertRecord(String name, String id_user, String regis, String cate, String moda, String moda_ate, String deli, String produc, String dire, String loca,
-                             String zona, String phone, String face, String insta, String linke, String descri, String image, String addedTime, String updatedTime){
+                             String zona, String phone, String face, String insta, String linke, String descri, String image, String estado, String addedTime, String updatedTime){
 
         //get databse grabable porque queremos escribir datos
 
@@ -123,6 +125,7 @@ public class MyDbHelper extends SQLiteOpenHelper {
         values.put(Constants.C_LINKE, linke);
         values.put(Constants.C_DESCRI, descri);
         values.put(Constants.C_IMAGE, image);
+        values.put(Constants.C_ESTADO, estado);
         values.put(Constants.C_ADDED_TIMESTAMP, addedTime);
         values.put(Constants.C_UPDATED_TIMESTAMP, updatedTime);
 
@@ -150,7 +153,7 @@ public class MyDbHelper extends SQLiteOpenHelper {
 
         ArrayList<ModelRecord> recordsList = new ArrayList<>();
         // consulta para seleccionar registros
-        String selectQuery = " SELECT * FROM " + Constants.TABLE_NAME + " WHERE " +Constants.C_REGIS + "=1" + " ORDER BY " + orderBy;
+        String selectQuery = " SELECT * FROM " + Constants.TABLE_NAME + " WHERE " +Constants.C_REGIS + "=1" + " AND " +Constants.C_ESTADO + "=1"  + " ORDER BY " + orderBy;
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
@@ -178,6 +181,7 @@ public class MyDbHelper extends SQLiteOpenHelper {
                         ""+cursor.getString(cursor.getColumnIndex(Constants.C_LINKE)),
                         ""+cursor.getString(cursor.getColumnIndex(Constants.C_DESCRI)),
                         ""+cursor.getString(cursor.getColumnIndex(Constants.C_IMAGE)),
+                        ""+cursor.getString(cursor.getColumnIndex(Constants.C_ESTADO)),
                         ""+cursor.getString(cursor.getColumnIndex(Constants.C_ADDED_TIMESTAMP)),
                         ""+cursor.getString(cursor.getColumnIndex(Constants.C_UPDATED_TIMESTAMP)));
 
@@ -230,6 +234,7 @@ public class MyDbHelper extends SQLiteOpenHelper {
                         ""+cursor.getString(cursor.getColumnIndex(Constants.C_LINKE)),
                         ""+cursor.getString(cursor.getColumnIndex(Constants.C_DESCRI)),
                         ""+cursor.getString(cursor.getColumnIndex(Constants.C_IMAGE)),
+                        ""+cursor.getString(cursor.getColumnIndex(Constants.C_ESTADO)),
                         ""+cursor.getString(cursor.getColumnIndex(Constants.C_ADDED_TIMESTAMP)),
                         ""+cursor.getString(cursor.getColumnIndex(Constants.C_UPDATED_TIMESTAMP)));
 
@@ -248,7 +253,7 @@ public class MyDbHelper extends SQLiteOpenHelper {
 
     //Obtener el numero de registros
     public int getRecordsCount(){
-        String countQuery = " SELECT * FROM " + Constants.TABLE_NAME + " WHERE " +Constants.C_REGIS + "=1";
+        String countQuery = " SELECT * FROM " + Constants.TABLE_NAME + " WHERE " +Constants.C_REGIS + "=1" + " AND " +Constants.C_ESTADO+ "=1";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(countQuery, null);
 
@@ -293,6 +298,7 @@ public class MyDbHelper extends SQLiteOpenHelper {
                         ""+cursor.getString(cursor.getColumnIndex(Constants.C_LINKE)),
                         ""+cursor.getString(cursor.getColumnIndex(Constants.C_DESCRI)),
                         ""+cursor.getString(cursor.getColumnIndex(Constants.C_IMAGE)),
+                        ""+cursor.getString(cursor.getColumnIndex(Constants.C_ESTADO)),
                         ""+cursor.getString(cursor.getColumnIndex(Constants.C_ADDED_TIMESTAMP)),
                         ""+cursor.getString(cursor.getColumnIndex(Constants.C_UPDATED_TIMESTAMP)));
 

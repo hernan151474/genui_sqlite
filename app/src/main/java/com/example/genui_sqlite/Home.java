@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
+import android.widget.Button;
 
 import com.example.genui_sqlite.DB.MyDbHelper;
 import com.google.android.material.snackbar.Snackbar;
@@ -23,14 +24,26 @@ public class Home extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityHomeBinding binding;
     MyDbHelper dbHelper;
+    Button button2;
+    int consulta;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         dbHelper = new MyDbHelper(this);
+        Bundle bundle= getIntent().getExtras();
+        int home=bundle.getInt("home");
+
 
         binding = ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        button2= (Button) findViewById(R.id.button2);
+
+        if(home==0){
+            button2.setVisibility(View.INVISIBLE);
+        } else if (home==1){
+            button2.setVisibility(View.VISIBLE);
+        }
 
         setSupportActionBar(binding.appBarHome.toolbar);
         DrawerLayout drawer = binding.drawerLayout;
@@ -38,7 +51,7 @@ public class Home extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow)
+                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,R.id.nav_contacto)
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_home);
@@ -73,8 +86,10 @@ public class Home extends AppCompatActivity {
     }
 
     public void registrar_genui (View view){
-        Object consulta = dbHelper.ConsultaUser();
+        Bundle bundle= getIntent().getExtras();
+        consulta=bundle.getInt("iduser");
         Intent registrar_genui = new Intent (this, AgregarRegistroActivity.class);
+        registrar_genui.putExtra("iduser", (Integer) consulta);
         startActivity(registrar_genui);
     }
 

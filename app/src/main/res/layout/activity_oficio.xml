@@ -50,13 +50,27 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="73dp"
         android:fontFamily="@font/roboto_bold"
-        android:text="Resultado: 100"
+        android:text="Resultado:"
         android:textColor="#FAF9F9"
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/textView7"
         app:layout_constraintHorizontal_bias="0.086"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    <TextView
+        android:id="@+id/count2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/roboto_black"
+        android:hint="0"
+        android:textColorHint="#FFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/textView7"
+        app:layout_constraintHorizontal_bias="0.041"
+        app:layout_constraintStart_toEndOf="@+id/textView6"
+        app:layout_constraintTop_toBottomOf="@+id/searchView" />
 
     <TextView
         android:id="@+id/textView7"

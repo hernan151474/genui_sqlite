@@ -32,6 +32,7 @@ public class Constants {
     public static final String C_LINKE = "LINKEDLN";
     public static final String C_DESCRI = "DESCRIPCION";
     public static  final String C_IMAGE = "IMAGE";
+    public static final String C_ESTADO= "ESTADO";
     public static final String C_ADDED_TIMESTAMP = "ADDED_TIME_STAMP";
     public static final String C_UPDATED_TIMESTAMP = "UPDATED_TIME_STAMP";
 
@@ -62,6 +63,7 @@ public class Constants {
             + C_LINKE+ " TEXT,"
             + C_DESCRI+ " TEXT,"
             + C_IMAGE+ " TEXT,"
+            + C_ESTADO+ " TEXT,"
             + C_ADDED_TIMESTAMP+ " TEXT,"
             + C_UPDATED_TIMESTAMP+ " TEXT,"
             + " FOREIGN KEY(" +C_ID_USER+ ") REFERENCES " +TABLE_USER+ "(" +C_IDUSER+"))";

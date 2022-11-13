@@ -20,5 +20,9 @@
             android:id="@+id/nav_contacto"
             android:icon="@drawable/ic_baseline_email_24"
             android:title="@string/menu_contacto" />
+        <item
+            android:id="@+id/nav_misposteo"
+            android:icon="@drawable/ic_baseline_attach_file_24"
+            android:title="Mis Posteos"/>
     </group>
 </menu>
