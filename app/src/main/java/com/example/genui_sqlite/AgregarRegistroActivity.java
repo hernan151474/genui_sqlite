@@ -53,7 +53,7 @@ public class AgregarRegistroActivity extends AppCompatActivity {
     private RadioButton radioempre;
     private RadioGroup radio_grup;
     //Actionbar
-    private ActionBar actionBar;
+    //private ActionBar actionBar;
     //Permiso de la clase Constants
     private  static final int CAMERA_REQUEST_CODE = 100;
     private static final int STORAGE_REQUEST_CODE = 101;
@@ -124,12 +124,12 @@ public class AgregarRegistroActivity extends AppCompatActivity {
         deliEt.setAdapter(adapter7);
         producEt.setAdapter(adapter8);
         //Inicializacion
-        actionBar = getSupportActionBar();
+        //actionBar = getSupportActionBar();
         //Titulo
-        actionBar.setTitle("Agregar Registro");
+        //actionBar.setTitle("Agregar Registro");
         //Boton Negro
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setDisplayShowHomeEnabled(true);
+        //actionBar.setDisplayHomeAsUpEnabled(true);
+        //actionBar.setDisplayShowHomeEnabled(true);
 
         profileIv = findViewById(R.id.profileIv);
         nameEt = findViewById(R.id.nameEt);
