@@ -22,14 +22,16 @@
         android:name="com.example.genui_sqlite.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
+
     <fragment
         android:id="@+id/nav_contacto"
         android:name="com.example.genui_sqlite.ui.contacto.ContactoFragment"
-        android:label="fragment_contacto"
+        android:label="@string/menu_contacto"
         tools:layout="@layout/fragment_contacto" />
     <fragment
         android:id="@+id/nav_posteos"
-        android:name="com.example.genui_sqlite.fragment_misposteos"
-        android:label="fragment_misposteos"
-        tools:layout="@layout/fragment_misposteos" />
+        android:name="com.example.genui_sqlite.ui.posteo.PosteoFragment"
+        android:label="@string/menu_posteo"
+        tools:layout="@layout/fragment_posteo" />
+
 </navigation>
