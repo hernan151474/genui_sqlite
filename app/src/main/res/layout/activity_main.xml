@@ -99,20 +99,12 @@
         android:text="Entrar como Invitado"
         android:textAllCaps="false"
         android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.483"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view20" />
-
-    <View
-        android:id="@+id/view19"
-        android:layout_width="400dp"
-        android:layout_height="6dp"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/linea_division"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.454"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/invitado" />
+        app:layout_constraintTop_toBottomOf="@+id/view20"
+        app:layout_constraintVertical_bias="0.076" />
 
     <Button
         android:id="@+id/registrarse"
@@ -140,17 +132,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/registrarse" />
 
-    <Button
-        android:id="@+id/google"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#FF0000"
-        android:fontFamily="@font/roboto_bold"
-        android:text="Entrar con Google"
-        android:textAllCaps="false"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view19" />
 </androidx.constraintlayout.widget.ConstraintLayout>
