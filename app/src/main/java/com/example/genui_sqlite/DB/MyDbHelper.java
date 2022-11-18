@@ -198,6 +198,7 @@ public class MyDbHelper extends SQLiteOpenHelper {
         return recordsList;
     }
 
+<<<<<<< HEAD
     public ArrayList<ModelRecord> getAllPosteo(String id_user, String estado){
         // la orden de consulta permitirá ordenar los datos más nuevo / más antiguo primero, nombre ascendente / descendente
         // devolverá la lista o registros ya que hemos utilizado return tipo ArrayList <ModelRecord>
@@ -205,6 +206,15 @@ public class MyDbHelper extends SQLiteOpenHelper {
         ArrayList<ModelRecord> recordsList1 = new ArrayList<>();
         // consulta para seleccionar registros
         String selectQuery = " SELECT * FROM " + Constants.TABLE_NAME + " WHERE " +Constants.C_ID_USER + " = ?" + " AND " +Constants.C_ESTADO + "=?";
+=======
+    public ArrayList<ModelRecord> getAllPosteo(String orderBy){
+        // la orden de consulta permitirá ordenar los datos más nuevo / más antiguo primero, nombre ascendente / descendente
+        // devolverá la lista o registros ya que hemos utilizado return tipo ArrayList <ModelRecord>
+
+        ArrayList<ModelRecord> recordsList = new ArrayList<>();
+        // consulta para seleccionar registros
+        String selectQuery = " SELECT * FROM " + Constants.TABLE_NAME + " WHERE " +Constants.C_ID_USER + " = " +Constants.C_ID_USER+ "" + " AND " +Constants.C_ESTADO + "=1"  + " ORDER BY " + orderBy;
+>>>>>>> da8920a217db549f146a0de8119e32d0dd79be38
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
@@ -237,7 +247,11 @@ public class MyDbHelper extends SQLiteOpenHelper {
                         ""+cursor.getString(cursor.getColumnIndex(Constants.C_UPDATED_TIMESTAMP)));
 
                 // Añadir registro a la list
+<<<<<<< HEAD
                 recordsList1.add(modelRecord);
+=======
+                recordsList.add(modelRecord);
+>>>>>>> da8920a217db549f146a0de8119e32d0dd79be38
             }while (cursor.moveToNext());
         }
 
@@ -246,7 +260,11 @@ public class MyDbHelper extends SQLiteOpenHelper {
         db.close();
 
         //retorna la lista
+<<<<<<< HEAD
         return recordsList1;
+=======
+        return recordsList;
+>>>>>>> da8920a217db549f146a0de8119e32d0dd79be38
     }
 
 

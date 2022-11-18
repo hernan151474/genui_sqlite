@@ -38,11 +38,14 @@ public class PosteoFragment extends Fragment {
 
 
 
+
+
     private MyDbHelper dbHelper;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView( inflater, container, savedInstanceState);
+<<<<<<< HEAD
 
         View view =  inflater.inflate(R.layout.fragment_posteo, container, false);
         posteo = (RecyclerView) view.findViewById(R.id.posteo);
@@ -52,6 +55,15 @@ public class PosteoFragment extends Fragment {
         dbHelper = new MyDbHelper(getActivity());
 
         loadRecords();
+=======
+        posteo = (RecyclerView) getActivity().findViewById(R.id.posteo);
+        int numberOfColumns = 2;
+
+         //posteo.setLayoutManager(new GridLayoutManager(getActivity(), numberOfColumns));
+        //Inicializamos db helper Clase
+        dbHelper = new MyDbHelper(getActivity());
+
+>>>>>>> da8920a217db549f146a0de8119e32d0dd79be38
 
         PosteoViewModel posteoViewModel =
                 new ViewModelProvider(this).get(PosteoViewModel.class);
@@ -63,6 +75,7 @@ public class PosteoFragment extends Fragment {
         return root;
     }
 
+<<<<<<< HEAD
     private void loadRecords(){
         dbHelper = new MyDbHelper(getActivity());
         int consulta = dbHelper.ConsultaUser();
@@ -72,6 +85,8 @@ public class PosteoFragment extends Fragment {
         posteo.setAdapter(adapterPosteo);
     }
 
+=======
+>>>>>>> da8920a217db549f146a0de8119e32d0dd79be38
     @Override
     public void onDestroyView() {
         super.onDestroyView();

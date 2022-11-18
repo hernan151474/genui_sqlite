@@ -46,6 +46,7 @@ public class Home extends AppCompatActivity {
 
 
 
+
         binding = ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         button2= (Button) findViewById(R.id.button2);
