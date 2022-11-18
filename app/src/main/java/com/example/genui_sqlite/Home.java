@@ -1,5 +1,7 @@
 package com.example.genui_sqlite;
 
+import static android.app.PendingIntent.getActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -7,9 +9,13 @@ import android.view.Menu;
 import android.widget.Button;
 
 import com.example.genui_sqlite.DB.MyDbHelper;
+import com.example.genui_sqlite.ui.posteo.PosteoFragment;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -31,8 +37,13 @@ public class Home extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         dbHelper = new MyDbHelper(this);
+        int consulta = dbHelper.ConsultaUser();
+        Intent intent=getIntent();
+        intent.putExtra("iduser", (Integer) consulta);
         Bundle bundle= getIntent().getExtras();
         int home=bundle.getInt("home");
+        consulta=bundle.getInt("iduser");
+
 
 
         binding = ActivityHomeBinding.inflate(getLayoutInflater());

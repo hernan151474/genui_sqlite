@@ -6,7 +6,6 @@ import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,25 +14,23 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class AdapterRecord extends RecyclerView.Adapter<AdapterRecord.HolderRecord>{
-
+public class AdapterPosteo extends RecyclerView.Adapter<AdapterPosteo.HolderRecord>{
     //Variables
     private Context context;
-    private ArrayList<ModelRecord> recordsList;
+    private ArrayList<ModelRecord> recordsList1;
     //Constructor
-    public AdapterRecord(Context context, ArrayList<ModelRecord> recordsList){
+    public AdapterPosteo(Context context, ArrayList<ModelRecord> recordsList){
         this.context = context;
-        this.recordsList = recordsList;
+        this.recordsList1 = recordsList1;
     }
 
     @NonNull
     @Override
     public HolderRecord onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         //inflate layout
-        View view = LayoutInflater.from(context).inflate(R.layout.row_record, parent, false);
         View view1 = LayoutInflater.from(context).inflate(R.layout.mis_posteos,parent,false);
 
-        return new HolderRecord(view);
+        return new HolderRecord(view1);
     }
 
     @Override
@@ -42,7 +39,7 @@ public class AdapterRecord extends RecyclerView.Adapter<AdapterRecord.HolderReco
         // obtener datos, establecer datos, ver clics en el método
 
         //Obtener datos
-        ModelRecord model = recordsList.get(position);
+        ModelRecord model = recordsList1.get(position);
         final String id = model.getId();
         String name = model.getName();
         String regis = model.getRegis();
@@ -96,10 +93,11 @@ public class AdapterRecord extends RecyclerView.Adapter<AdapterRecord.HolderReco
 
     @Override
     public int getItemCount() {
-        return recordsList.size();// devuelve el tamaño de la lista / número o registros
+        return recordsList1.size();// devuelve el tamaño de la lista / número o registros
     }
 
-    static class HolderRecord extends RecyclerView.ViewHolder{
+
+    class HolderRecord extends RecyclerView.ViewHolder{
         //vistas
         ImageView profileIv;
         TextView nameTv;

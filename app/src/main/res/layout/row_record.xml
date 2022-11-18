@@ -2,9 +2,10 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="400dp"
     android:layout_height="230dp"
     android:layout_marginTop="7dp"
+    android:layout_marginStart="5dp"
     android:orientation="horizontal"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
@@ -13,6 +14,7 @@
         android:layout_width="150dp"
         android:layout_height="210dp"
         android:layout_marginTop="7dp"
+        android:layout_marginStart="15dp"
         app:cardElevation="1dp"
         app:cardUseCompatPadding="true"
         app:contentPadding="3dp"
@@ -62,7 +64,7 @@
         android:id="@+id/view9"
         android:layout_width="400dp"
         android:layout_height="6dp"
-        android:layout_marginStart="-170dp"
+        android:layout_marginStart="-153dp"
         android:layout_marginTop="225dp"
         android:background="@drawable/linea_division"
         app:layout_constraintEnd_toEndOf="parent"
