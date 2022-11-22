@@ -2,6 +2,7 @@ package com.example.genui_sqlite;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -33,6 +34,7 @@ public class AgregarUser extends AppCompatActivity {
         String email_resgitrar = registrar_user.getText().toString();
         String password_registrar = registrar_password.getText().toString();
         String password_confirmar = confirmar_password.getText().toString();
+        Intent registrar = new Intent(this, MainActivity.class);
         if (email_resgitrar.isEmpty() && password_registrar.isEmpty() && password_confirmar.isEmpty()) {
             Toast.makeText(this, "Ingrese un correo y una contraseña!!!", Toast.LENGTH_SHORT).show();
         } else {
@@ -47,6 +49,7 @@ public class AgregarUser extends AppCompatActivity {
                             "" + password
                     );
                     Toast.makeText(this, "Se Registro con Exito!!", Toast.LENGTH_SHORT).show();
+                    startActivity(registrar);
                 } else {
                     Toast.makeText(this, "No Coincide las Contraseñas, Ingrese Nuevamente", Toast.LENGTH_SHORT).show();
                     registrar_password.setText("");

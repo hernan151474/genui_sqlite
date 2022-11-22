@@ -2,6 +2,7 @@ package com.example.genui_sqlite;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -31,6 +32,7 @@ public class RecuperarPassword extends AppCompatActivity {
         String email = email_recuperar.getText().toString();
         String recuperar_pass = nuevopass_recuperar.getText().toString();
         String confi_recuperar_pass = confirmarpass_recuperar.getText().toString();
+        Intent recuperar = new Intent(this, MainActivity.class);
         if (email.isEmpty() && recuperar_pass.isEmpty() && confi_recuperar_pass.isEmpty()) {
             Toast.makeText(this, "Ingrese un correo y una contraseña!!!", Toast.LENGTH_SHORT).show();
         } else {
@@ -46,6 +48,7 @@ public class RecuperarPassword extends AppCompatActivity {
                             "" + password
                     );
                     Toast.makeText(this, "Se Modifico con Exito!!", Toast.LENGTH_SHORT).show();
+                    startActivity(recuperar);
                 } else {
                     Toast.makeText(this, "No Coincide las Contraseñas, Ingrese Nuevamente", Toast.LENGTH_SHORT).show();
                     nuevopass_recuperar.setText("");
