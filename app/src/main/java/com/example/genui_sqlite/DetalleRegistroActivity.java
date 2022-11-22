@@ -44,10 +44,7 @@ public class DetalleRegistroActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detalle_registro);
 
         //setting up actionbar with title and back button
-        actionBar = getSupportActionBar();
-        actionBar.setTitle("Detalle del Registro");
-        actionBar.setDisplayShowHomeEnabled(true);
-        actionBar.setDisplayHomeAsUpEnabled(true);
+
 
         //obtener la identificación de registro del adaptador mediante la intención
         Intent intent = getIntent();

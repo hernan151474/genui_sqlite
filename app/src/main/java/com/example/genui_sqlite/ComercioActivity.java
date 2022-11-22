@@ -2,21 +2,14 @@ package com.example.genui_sqlite;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.example.genui_sqlite.DB.MyDbHelper;
-import com.example.genui_sqlite.databinding.ActivityHomeBinding;
-import com.google.android.material.navigation.NavigationView;
 
 public class ComercioActivity extends AppCompatActivity {
 
@@ -30,15 +23,16 @@ public class ComercioActivity extends AppCompatActivity {
     private MyDbHelper dbHelper;
 
     ActionBar actionBar;
+    SearchView searchview2;
 
 
-    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comercio);
         recordsRv = findViewById(R.id.recordsRv);
         count = (TextView) findViewById(R.id.count1);
+        searchview2=(SearchView) findViewById(R.id.searchView2);
         int numberOfColumns = 2;
         recordsRv.setLayoutManager(new GridLayoutManager(this, numberOfColumns));
         //Inicializamos db helper Clase
@@ -47,7 +41,34 @@ public class ComercioActivity extends AppCompatActivity {
 
 
         loadRecords();
+
+
+        searchview2.setQueryHint("Buscar");
+
+        searchview2.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                searchRecords(query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                searchRecords(newText);
+                return false;
+            }
+        });
     }
+
+    private void searchRecords(String query){
+        AdapterRecord adapterRecord = new AdapterRecord(ComercioActivity.this,
+                dbHelper.searchRecords(query));
+
+        recordsRv.setAdapter(adapterRecord);
+
+    }
+
 
     private void loadRecords(){
         AdapterRecord adapterRecord = new AdapterRecord(ComercioActivity.this,
@@ -60,6 +81,7 @@ public class ComercioActivity extends AppCompatActivity {
         cantidad=dbHelper.getRecordsCount();
         count.setText(String.valueOf(cantidad));
     }
+
 
     @Override
     protected void onResume(){

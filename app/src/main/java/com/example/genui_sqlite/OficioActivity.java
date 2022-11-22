@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.example.genui_sqlite.DB.MyDbHelper;
@@ -20,6 +21,7 @@ public class OficioActivity extends AppCompatActivity {
 
     //DB Helper
     private MyDbHelper dbHelper;
+    SearchView searchview3;
 
     ActionBar actionBar;
 
@@ -29,12 +31,38 @@ public class OficioActivity extends AppCompatActivity {
         setContentView(R.layout.activity_oficio);
         recordsRv = findViewById(R.id.recordsRv);
         count = (TextView) findViewById(R.id.count2);
+        searchview3=(SearchView) findViewById(R.id.searchView3);
         int numberOfColumns = 2;
         recordsRv.setLayoutManager(new GridLayoutManager(this, numberOfColumns));
         //Inicializamos db helper Clase
         dbHelper = new MyDbHelper(this);
 
-        //Inicializacion ActionBar
+        loadRecords();
+
+        searchview3.setQueryHint("Buscar");
+
+        searchview3.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                searchRecords(query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                searchRecords(newText);
+                return false;
+            }
+        });
+
+    }
+
+    private void searchRecords(String query){
+        AdapterRecord adapterRecord = new AdapterRecord(OficioActivity.this,
+                dbHelper.searchRecords1(query));
+
+        recordsRv.setAdapter(adapterRecord);
 
     }
 

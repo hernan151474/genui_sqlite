@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <SearchView
-        android:id="@+id/searchView"
+        android:id="@+id/searchView3"
         android:layout_width="246dp"
         android:layout_height="39dp"
         android:layout_marginTop="12dp"
@@ -42,7 +42,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchView" />
+        app:layout_constraintTop_toBottomOf="@+id/searchView3" />
 
     <TextView
         android:id="@+id/textView6"
@@ -70,7 +70,7 @@
         app:layout_constraintEnd_toStartOf="@+id/textView7"
         app:layout_constraintHorizontal_bias="0.041"
         app:layout_constraintStart_toEndOf="@+id/textView6"
-        app:layout_constraintTop_toBottomOf="@+id/searchView" />
+        app:layout_constraintTop_toBottomOf="@+id/searchView3" />
 
     <TextView
         android:id="@+id/textView7"

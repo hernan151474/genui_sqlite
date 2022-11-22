@@ -49,13 +49,7 @@ public class Home extends AppCompatActivity {
 
         binding = ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        button2= (Button) findViewById(R.id.button2);
 
-        if(home==0){
-            button2.setVisibility(View.INVISIBLE);
-        } else if (home==1){
-            button2.setVisibility(View.VISIBLE);
-        }
 
         setSupportActionBar(binding.appBarHome.toolbar);
         DrawerLayout drawer = binding.drawerLayout;
@@ -69,6 +63,14 @@ public class Home extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_home);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+        button2= (Button) findViewById(R.id.button2);
+
+        if(home==0){
+            button2.setVisibility(View.INVISIBLE);
+        } else if (home==1){
+            button2.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override

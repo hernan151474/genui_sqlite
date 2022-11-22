@@ -198,7 +198,6 @@ public class MyDbHelper extends SQLiteOpenHelper {
         return recordsList;
     }
 
-<<<<<<< HEAD
     public ArrayList<ModelRecord> getAllPosteo(String id_user, String estado){
         // la orden de consulta permitirá ordenar los datos más nuevo / más antiguo primero, nombre ascendente / descendente
         // devolverá la lista o registros ya que hemos utilizado return tipo ArrayList <ModelRecord>
@@ -206,15 +205,6 @@ public class MyDbHelper extends SQLiteOpenHelper {
         ArrayList<ModelRecord> recordsList1 = new ArrayList<>();
         // consulta para seleccionar registros
         String selectQuery = " SELECT * FROM " + Constants.TABLE_NAME + " WHERE " +Constants.C_ID_USER + " = ?" + " AND " +Constants.C_ESTADO + "=?";
-=======
-    public ArrayList<ModelRecord> getAllPosteo(String orderBy){
-        // la orden de consulta permitirá ordenar los datos más nuevo / más antiguo primero, nombre ascendente / descendente
-        // devolverá la lista o registros ya que hemos utilizado return tipo ArrayList <ModelRecord>
-
-        ArrayList<ModelRecord> recordsList = new ArrayList<>();
-        // consulta para seleccionar registros
-        String selectQuery = " SELECT * FROM " + Constants.TABLE_NAME + " WHERE " +Constants.C_ID_USER + " = " +Constants.C_ID_USER+ "" + " AND " +Constants.C_ESTADO + "=1"  + " ORDER BY " + orderBy;
->>>>>>> da8920a217db549f146a0de8119e32d0dd79be38
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
@@ -247,11 +237,61 @@ public class MyDbHelper extends SQLiteOpenHelper {
                         ""+cursor.getString(cursor.getColumnIndex(Constants.C_UPDATED_TIMESTAMP)));
 
                 // Añadir registro a la list
-<<<<<<< HEAD
+
                 recordsList1.add(modelRecord);
-=======
+
+            }while (cursor.moveToNext());
+        }
+        //cierre de conexión db
+        db.close();
+        //retorna la lista
+        return recordsList1;
+
+    }
+
+
+    //Buscar todos datos
+    //Busqueda de Emprendimientos y PYMES
+    public ArrayList<ModelRecord> searchRecords(String query){
+        // la orden de consulta permitirá ordenar los datos más nuevo / más antiguo primero, nombre ascendente / descendente
+        // devolverá la lista o registros ya que hemos utilizado return tipo ArrayList <ModelRecord>
+
+        ArrayList<ModelRecord> recordsList = new ArrayList<>();
+        // consulta para seleccionar registros
+        String selectQuery = " SELECT * FROM " + Constants.TABLE_NAME + " WHERE " + Constants.C_NAME +  " LIKE '%" + query +"%'" + " AND " + Constants.C_REGIS + "=1" +"";
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        // recorrer todos los registros y agregarlos a la lista
+        if ( cursor.moveToFirst()){
+            do {
+
+                @SuppressLint("Range") ModelRecord modelRecord = new ModelRecord(
+                        ""+cursor.getInt(cursor.getColumnIndex(Constants.C_ID)),
+                        ""+cursor.getString(cursor.getColumnIndex(Constants.C_ID_USER)),
+                        ""+cursor.getString(cursor.getColumnIndex(Constants.C_NAME)),
+                        ""+cursor.getString(cursor.getColumnIndex(Constants.C_REGIS)),
+                        ""+cursor.getString(cursor.getColumnIndex(Constants.C_CATE)),
+                        ""+cursor.getString(cursor.getColumnIndex(Constants.C_MODA)),
+                        ""+cursor.getString(cursor.getColumnIndex(Constants.C_MODA_ATE)),
+                        ""+cursor.getString(cursor.getColumnIndex(Constants.C_DELI)),
+                        ""+cursor.getString(cursor.getColumnIndex(Constants.C_PRODUC)),
+                        ""+cursor.getString(cursor.getColumnIndex(Constants.C_DIRE)),
+                        ""+cursor.getString(cursor.getColumnIndex(Constants.C_LOCA)),
+                        ""+cursor.getString(cursor.getColumnIndex(Constants.C_ZONA)),
+                        ""+cursor.getString(cursor.getColumnIndex(Constants.C_PHONE)),
+                        ""+cursor.getString(cursor.getColumnIndex(Constants.C_FACE)),
+                        ""+cursor.getString(cursor.getColumnIndex(Constants.C_INSTA)),
+                        ""+cursor.getString(cursor.getColumnIndex(Constants.C_LINKE)),
+                        ""+cursor.getString(cursor.getColumnIndex(Constants.C_DESCRI)),
+                        ""+cursor.getString(cursor.getColumnIndex(Constants.C_IMAGE)),
+                        ""+cursor.getString(cursor.getColumnIndex(Constants.C_ESTADO)),
+                        ""+cursor.getString(cursor.getColumnIndex(Constants.C_ADDED_TIMESTAMP)),
+                        ""+cursor.getString(cursor.getColumnIndex(Constants.C_UPDATED_TIMESTAMP)));
+
+                // Añadir registro a la list
                 recordsList.add(modelRecord);
->>>>>>> da8920a217db549f146a0de8119e32d0dd79be38
             }while (cursor.moveToNext());
         }
 
@@ -260,22 +300,18 @@ public class MyDbHelper extends SQLiteOpenHelper {
         db.close();
 
         //retorna la lista
-<<<<<<< HEAD
-        return recordsList1;
-=======
         return recordsList;
->>>>>>> da8920a217db549f146a0de8119e32d0dd79be38
     }
 
 
-    //Buscar todos datos
-    public ArrayList<ModelRecord> searchRecords(String query){
+    //Busqueda de Profesionales y Oficios
+    public ArrayList<ModelRecord> searchRecords1(String query){
         // la orden de consulta permitirá ordenar los datos más nuevo / más antiguo primero, nombre ascendente / descendente
         // devolverá la lista o registros ya que hemos utilizado return tipo ArrayList <ModelRecord>
 
         ArrayList<ModelRecord> recordsList = new ArrayList<>();
         // consulta para seleccionar registros
-        String selectQuery = " SELECT * FROM " + Constants.TABLE_NAME + " WHERE " + Constants.C_NAME + " LIKE '%" + query +"%'";
+        String selectQuery = " SELECT * FROM " + Constants.TABLE_NAME + " WHERE " + Constants.C_NAME +  " LIKE '%" + query +"%'" + " AND " + Constants.C_REGIS + "=0" +"";
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
