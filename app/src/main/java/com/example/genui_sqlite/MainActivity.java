@@ -39,11 +39,11 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "Por favor, introduzca todos los campos", Toast.LENGTH_SHORT).show();
                 else{
                     Boolean checkuserpass = dbHelper.checkusernamepassword(user, password);
+                    int checkid_user = dbHelper.checkid_user(user, password);
                     if(checkuserpass==true){
-                       int consulta = dbHelper.ConsultaUser();
                         Toast.makeText(MainActivity.this, "Inicio de sesión con éxito", Toast.LENGTH_SHORT).show();
                         Intent intent  = new Intent(getApplicationContext(), Home.class);
-                        intent.putExtra("iduser", (Integer) consulta);
+                        intent.putExtra("iduser", (Integer) checkid_user);
                         intent.putExtra("home", (Integer) 1);
                         startActivity(intent);
                     }else{

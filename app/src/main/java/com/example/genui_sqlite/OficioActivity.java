@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.SearchView;
 import android.widget.TextView;
@@ -16,6 +17,7 @@ public class OficioActivity extends AppCompatActivity {
     private RecyclerView recordsRv;
     TextView count;
     int cantidad=0;
+    int consulta;
 
 
 
@@ -34,6 +36,9 @@ public class OficioActivity extends AppCompatActivity {
         searchview3=(SearchView) findViewById(R.id.searchView3);
         int numberOfColumns = 2;
         recordsRv.setLayoutManager(new GridLayoutManager(this, numberOfColumns));
+        Bundle bundle= getIntent().getExtras();
+        consulta=bundle.getInt("iduser");
+
         //Inicializamos db helper Clase
         dbHelper = new MyDbHelper(this);
 
@@ -67,13 +72,15 @@ public class OficioActivity extends AppCompatActivity {
     }
 
     private void loadRecords(){
-        AdapterRecord adapterRecord = new AdapterRecord(OficioActivity.this,
+
+
+        AdapterPosteo adapterRecord = new AdapterPosteo(OficioActivity.this,
                 dbHelper.getAllRecords1(Constants.C_ADDED_TIMESTAMP + " DESC"));
 
         recordsRv.setAdapter(adapterRecord);
 
         //Establecer el numero de Registros
-        cantidad=dbHelper.getRecordsCount1();
+        cantidad=dbHelper.getRecordsCountPosteo(consulta);
         count.setText(String.valueOf(cantidad));
     }
 

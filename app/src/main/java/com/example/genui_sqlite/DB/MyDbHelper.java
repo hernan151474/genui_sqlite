@@ -66,6 +66,19 @@ public class MyDbHelper extends SQLiteOpenHelper {
             return false;
     }
 
+    public int checkid_user(String user, String password) {
+        int id = 0;
+        SQLiteDatabase MyDB = this.getWritableDatabase();
+        Cursor cursor = MyDB.rawQuery("Select iduser, user, password from user where user = ? and password = ?", new String[]{user, password});
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            id = cursor.getInt(cursor.getColumnIndex(Constants.C_IDUSER));
+            return id;
+        } else {
+            return 0;
+        }
+    }
+
     //consultar si existe el user
     public Boolean checkusername(String user) {
         SQLiteDatabase MyDB = this.getWritableDatabase();
@@ -198,13 +211,13 @@ public class MyDbHelper extends SQLiteOpenHelper {
         return recordsList;
     }
 
-    public ArrayList<ModelRecord> getAllPosteo(String id_user, String estado){
+    public ArrayList<ModelRecord> getAllPosteo(int id_user){
         // la orden de consulta permitirá ordenar los datos más nuevo / más antiguo primero, nombre ascendente / descendente
         // devolverá la lista o registros ya que hemos utilizado return tipo ArrayList <ModelRecord>
 
         ArrayList<ModelRecord> recordsList1 = new ArrayList<>();
         // consulta para seleccionar registros
-        String selectQuery = " SELECT * FROM " + Constants.TABLE_NAME + " WHERE " +Constants.C_ID_USER + " = ?" + " AND " +Constants.C_ESTADO + "=?";
+        String selectQuery = " SELECT * FROM " + Constants.TABLE_NAME + " WHERE " +Constants.C_ID_USER + " = " +id_user  + " AND " +Constants.C_ESTADO + "=1";
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
@@ -247,6 +260,18 @@ public class MyDbHelper extends SQLiteOpenHelper {
         //retorna la lista
         return recordsList1;
 
+    }
+//Conteo de Posteos
+    public int getRecordsCountPosteo(int consulta){
+        String countQuery = " SELECT * FROM " + Constants.TABLE_NAME + " WHERE " +Constants.C_ID_USER + "= " +consulta + " AND " +Constants.C_ESTADO+ "=1";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(countQuery, null);
+
+        int count = cursor.getCount();
+
+        cursor.close();
+
+        return count;
     }
 
 

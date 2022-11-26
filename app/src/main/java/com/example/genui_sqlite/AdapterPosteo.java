@@ -18,9 +18,10 @@ public class AdapterPosteo extends RecyclerView.Adapter<AdapterPosteo.HolderReco
     //Variables
     private Context context;
     private ArrayList<ModelRecord> recordsList1;
+    LayoutInflater inflater;
     //Constructor
-    public AdapterPosteo(Context context, ArrayList<ModelRecord> recordsList){
-        this.context = context;
+    public AdapterPosteo(Context context, ArrayList<ModelRecord> recordsList1){
+        this.inflater = LayoutInflater.from(context);
         this.recordsList1 = recordsList1;
     }
 
@@ -28,7 +29,8 @@ public class AdapterPosteo extends RecyclerView.Adapter<AdapterPosteo.HolderReco
     @Override
     public HolderRecord onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         //inflate layout
-        View view1 = LayoutInflater.from(context).inflate(R.layout.mis_posteos,parent,false);
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+        View view1 = inflater.inflate(R.layout.mis_posteos,parent,false);
 
         return new HolderRecord(view1);
     }
@@ -42,6 +44,7 @@ public class AdapterPosteo extends RecyclerView.Adapter<AdapterPosteo.HolderReco
         ModelRecord model = recordsList1.get(position);
         final String id = model.getId();
         String name = model.getName();
+        String id_user = model.getId_user();
         String regis = model.getRegis();
         String cate = model.getCate();
         String moda = model.getModa();
@@ -57,6 +60,7 @@ public class AdapterPosteo extends RecyclerView.Adapter<AdapterPosteo.HolderReco
         String linke = model.getLinke();
         String descri = model.getDescri();
         String image = model.getImage();
+        String estado =  model.getEstado();
         String addedTime = model.getAddedTime();
         String updatedTime = model.getUpdatedTime();
 
@@ -105,8 +109,8 @@ public class AdapterPosteo extends RecyclerView.Adapter<AdapterPosteo.HolderReco
             super(itemView);
 
             //Inicializamos la vistas
-            profileIv = itemView.findViewById(R.id.profileIv);
-            nameTv = itemView.findViewById(R.id.nameTv);
+            profileIv = itemView.findViewById(R.id.profileIv1);
+            nameTv = itemView.findViewById(R.id.nameTv1);
         }
     }
 }

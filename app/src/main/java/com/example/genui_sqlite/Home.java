@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.widget.Button;
 
 import com.example.genui_sqlite.DB.MyDbHelper;
+import com.example.genui_sqlite.ui.home.HomeFragment;
 import com.example.genui_sqlite.ui.posteo.PosteoFragment;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
@@ -37,14 +38,10 @@ public class Home extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         dbHelper = new MyDbHelper(this);
-        int consulta = dbHelper.ConsultaUser();
-        Intent intent=getIntent();
-        intent.putExtra("iduser", (Integer) consulta);
         Bundle bundle= getIntent().getExtras();
         int home=bundle.getInt("home");
         consulta=bundle.getInt("iduser");
-
-
+        bundle.putInt("iduser",consulta);
 
 
         binding = ActivityHomeBinding.inflate(getLayoutInflater());
@@ -61,6 +58,7 @@ public class Home extends AppCompatActivity {
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_home);
+        navController.navigate(R.id.nav_posteos, bundle);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
@@ -91,6 +89,7 @@ public class Home extends AppCompatActivity {
 
     public void Oficio (View view){
         Intent oficio = new Intent(this, OficioActivity.class);
+        oficio.putExtra("iduser", (Integer) consulta);
         startActivity(oficio);
     }
 
