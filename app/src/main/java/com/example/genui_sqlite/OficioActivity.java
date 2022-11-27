@@ -80,7 +80,7 @@ public class OficioActivity extends AppCompatActivity {
         recordsRv.setAdapter(adapterRecord);
 
         //Establecer el numero de Registros
-        cantidad=dbHelper.getRecordsCountPosteo(consulta);
+        cantidad=dbHelper.getRecordsCount1();
         count.setText(String.valueOf(cantidad));
     }
 

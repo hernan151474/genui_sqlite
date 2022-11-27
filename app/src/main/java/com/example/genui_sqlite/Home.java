@@ -9,14 +9,8 @@ import android.view.Menu;
 import android.widget.Button;
 
 import com.example.genui_sqlite.DB.MyDbHelper;
-import com.example.genui_sqlite.ui.home.HomeFragment;
-import com.example.genui_sqlite.ui.posteo.PosteoFragment;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -33,15 +27,17 @@ public class Home extends AppCompatActivity {
     MyDbHelper dbHelper;
     Button button2;
     int consulta;
+    int variable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         dbHelper = new MyDbHelper(this);
-        Bundle bundle= getIntent().getExtras();
-        int home=bundle.getInt("home");
-        consulta=bundle.getInt("iduser");
-        bundle.putInt("iduser",consulta);
+        Bundle bundle = getIntent().getExtras();
+        int home = bundle.getInt("home");
+        consulta = bundle.getInt("iduser");
+        bundle.putInt("iduser", consulta);
+        variable = consulta;
 
 
         binding = ActivityHomeBinding.inflate(getLayoutInflater());
@@ -54,19 +50,18 @@ public class Home extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,R.id.nav_contacto, R.id.nav_posteos)
+                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow, R.id.nav_contacto, R.id.nav_posteos)
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_home);
-        navController.navigate(R.id.nav_posteos, bundle);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-        button2= (Button) findViewById(R.id.button2);
+        button2 = (Button) findViewById(R.id.button2);
 
-        if(home==0){
+        if (home == 0) {
             button2.setVisibility(View.INVISIBLE);
-        } else if (home==1){
+        } else if (home == 1) {
             button2.setVisibility(View.VISIBLE);
         }
     }
@@ -86,48 +81,55 @@ public class Home extends AppCompatActivity {
     }
 
 
-
-    public void Oficio (View view){
+    public void Oficio(View view) {
         Intent oficio = new Intent(this, OficioActivity.class);
         oficio.putExtra("iduser", (Integer) consulta);
         startActivity(oficio);
     }
 
-    public void Comercio (View view){
+    public void Comercio(View view) {
         Intent comercio = new Intent(this, ComercioActivity.class);
         startActivity(comercio);
     }
 
-    public void registrar_genui (View view){
-        Bundle bundle= getIntent().getExtras();
-        consulta=bundle.getInt("iduser");
-        Intent registrar_genui = new Intent (this, AgregarRegistroActivity.class);
+    public void registrar_genui(View view) {
+        Bundle bundle = getIntent().getExtras();
+        consulta = bundle.getInt("iduser");
+        Intent registrar_genui = new Intent(this, AgregarRegistroActivity.class);
         registrar_genui.putExtra("iduser", (Integer) consulta);
         startActivity(registrar_genui);
     }
 
-    public void Objetivo (View view){
+    public void Objetivo(View view) {
         Intent objetivo = new Intent(this, ObjetivosActivity.class);
         startActivity(objetivo);
     }
 
-    public void Genui (View view){
+    public void Genui(View view) {
         Intent genui = new Intent(this, Que_es_Genui.class);
         startActivity(genui);
     }
 
-    public void Valor (View view){
+    public void Valor(View view) {
         Intent valor = new Intent(this, Valor.class);
         startActivity(valor);
     }
 
-    public void Vision_Hitos (View view){
+    public void Vision_Hitos(View view) {
         Intent vision_hitos = new Intent(this, Vision_Hitos.class);
         startActivity(vision_hitos);
     }
 
-    public void Foco_Alcance (View view){
+    public void Foco_Alcance(View view) {
         Intent foco_alcance = new Intent(this, Foco_Alcance.class);
         startActivity(foco_alcance);
     }
+
+    public int getDataFragment(){
+
+        return variable;
+
+    }
+
 }
+

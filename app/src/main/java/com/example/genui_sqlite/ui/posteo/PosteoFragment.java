@@ -46,8 +46,9 @@ public class PosteoFragment extends Fragment  {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        Bundle bundle= getArguments();
-        consulta=bundle.getInt("iduser");
+        Home activity = (Home) getActivity();
+        consulta = activity.getDataFragment();
+
         binding = FragmentPosteoBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
