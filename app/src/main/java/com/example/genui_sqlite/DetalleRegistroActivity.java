@@ -11,11 +11,13 @@ import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.genui_sqlite.DB.MyDbHelper;
+import com.example.genui_sqlite.ui.posteo.PosteoFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.Calendar;
@@ -40,6 +42,7 @@ public class DetalleRegistroActivity extends AppCompatActivity {
     private MyDbHelper dbHelper;
     private FloatingActionButton borrado;
     String estado;
+    int consulta;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +57,7 @@ public class DetalleRegistroActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         int borrar = bundle.getInt("borrado");
         recordID = intent.getStringExtra("RECORD_ID");
+        consulta = bundle.getInt("iduser");
 
         //Inicializacion BD Helper Clase
         dbHelper = new MyDbHelper(this);
@@ -88,6 +92,11 @@ public class DetalleRegistroActivity extends AppCompatActivity {
                     estado="0";
                     dbHelper.Borrado("" +recordID,
                             "" + estado);
+                    Toast.makeText(DetalleRegistroActivity.this,"Se borro con exito!!", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getApplicationContext(), Home.class);
+                    intent.putExtra("home", (Integer) 1);
+                    intent.putExtra("iduser", (Integer) consulta);
+                    startActivity(intent);
                 }
             });
         }

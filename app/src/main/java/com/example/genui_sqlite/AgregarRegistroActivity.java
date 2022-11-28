@@ -253,6 +253,8 @@ public class AgregarRegistroActivity extends AppCompatActivity {
         );
 
         Toast.makeText(this, "Registro agregado contra ID: "+id, Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(getApplicationContext(), Home.class);
+        startActivity(intent);
     }
     private void imagePickDialog(){
         // opciones para mostrar en el diálogo
