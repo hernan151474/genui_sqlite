@@ -104,11 +104,11 @@ public class AgregarRegistroActivity extends AppCompatActivity {
         deliEt=(Spinner)findViewById(R.id.deliEt);
         producEt=(Spinner)findViewById(R.id.producEt);
         String[] opciones3 = {"Modalidad de Servicio", "A Domicilio", "Remota (Teleconsulta)", "En Oficina/Consultorio", "A Domicilio/Remota (Teleconsulta)",
-                "A Domicilio/Remota (Teleconsulta)/En Oficina/Consultorio", "A Domicilio/En Oficina/Consultorio"};
+                "A Domicilio/Remota (Teleconsulta)/En Oficina/Consultorio", "A Domicilio/En Oficina/Consultorio", "Remota (Teleconsulta)/En Oficina/Consultorio"};
         String [] opciones4={"Localidad", "El Cármen", "Humahuaca", "La Quiaca", "Libertador Gral. San Martín", "Palpalá", "Perico",
                 "Purmamarca", "San Antonio", "San Salvador de Jujuy", "San Pedro de Jujuy", "Tilcara"};
         String [] opciones5={"Zona de la Localidad", "Norte", "Sur", "Este", "Oeste", "Centro"};
-        String [] opciones6={"Modalidad de atención", "Local físico", "Tienda virtual"};
+        String [] opciones6={"Modalidad de atención", "Local físico", "Tienda virtual", "Tienda Virtual/Local Fisico"};
         String [] opciones7={"Delivery", "Si", "No"};
         String [] opciones8={"¿Comercias alguno de estos productos?", "Sin TACC", "Contra el Covid-19", "Eco Productos (mejorar el medio ambiente)"};
         ArrayAdapter<String> adapter3 = new ArrayAdapter <String> (this, R.layout.spner_item_color,opciones3);
@@ -174,10 +174,10 @@ public class AgregarRegistroActivity extends AppCompatActivity {
     }
 
     public void radioprofe (View view){
-        String[] opciones1 = {"Categoria", "Asesoramiento Contable y Legal", "Belleza y Cuidado Personal", "Comunicación y Diseño",
-                "Cursos y Clases", "Delivery", "Fiestas y Eventos", "Fotografía, Música y Cine", "Hogar y Construcción",
-                "Imprenta", "Mantenimiento de Vehículos", "Medicina, Salud y Asistentes Domiciliarios", "Ropa y Moda",
-                "Servicios para Mascotas", "Servicios para Oficinas", "Tecnología", "Transporte", "Viajes y Turismo", "Arte"};
+        String[] opciones1 = {"Categoria", "Asesoramiento Contable y Legal", "Asesoramiento Inmobiliario", "Belleza y Cuidado Personal", "Comunicación y Diseño",
+                "Cursos y Clases", "Delivery", "Fiestas y Eventos", "Fotografía, Música y Cine", "Hogar y Construcción", "Higiene y Seguridad",
+                "Imprenta", "Mantenimiento de Vehículos", "Medicina, Salud y Asistentes Domiciliarios", "Mecánico automotriz", "Prestamo", "Ropa y Moda",
+                "Servicios para Mascotas", "Servicios para Oficinas", "Servicios de Traducción", "Tecnología", "Transporte", "Viajes y Turismo", "Arte"};
         ArrayAdapter<String> adapter1 = new ArrayAdapter <String> (this, R.layout.spner_item_color,opciones1);
         cateEt.setAdapter(adapter1);
         modaEt.setEnabled(true);
@@ -190,13 +190,13 @@ public class AgregarRegistroActivity extends AppCompatActivity {
 
 
     public void radioempre (View view){
-        String[] opciones2 = {"Categoria", "Accesorios para Motos", "Accesorios para Vehículos", "Agro", "Alimentos y Bebidas",
-                "Animales y Mascotas", "Antigüedades y Colecciones", "Arte, Librería y Mercería", "Autos, Motos y Otros",
+        String[] opciones2 = {"Categoria", "Accesorios para Motos", "Accesorios para Vehículos", "Agro", "Alimentos y Bebidas", "Almohadones y tejidos en general",
+                "Animales y Mascotas", "Antigüedades y Colecciones", "Arte, Librería y Mercería", "Artículos de limpieza", "Autos, Motos y Otros",
                 "Bebés", "Belleza y Cuidado Personal", "Celulares y Teléfonos", "Computación", "Consolas y Videojuegos",
                 "Cámaras y Accesorios", "Deportes y Fitness", "Electrodomésticos", "Electrónica, Audio y Video", "Entradas para Eventos",
                 "Herramientas y Construcción", "Hogar, Muebles y Jardín", "Industrias y Oficinas", "Inmuebles", "Instrumentos Musicales",
                 "Joyas y Relojes", "Juegos y Juguetes", "Libros, Revistas y Comics", "Música, Películas y Series", "Ropa y Accesorios",
-                "Salud y Equipamiento Médico", "Souvenirs, Cotillón y Fiestas", "Alimentos Vegetarianos", "Marroquineria"};
+                "Salud y Equipamiento Médico", "Souvenirs, Cotillón y Fiestas", "Alimentos Vegetarianos", "Marroquineria", "Fotografía/Videografía/Edición de Video"};
         ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, R.layout.spner_item_color, opciones2);
         cateEt.setAdapter(adapter2);
         modaEt.setEnabled(false);

@@ -2,15 +2,16 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="400dp"
     android:layout_height="230dp"
     android:layout_marginTop="7dp"
+    android:layout_marginStart="5dp"
     android:orientation="horizontal"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
     <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
+        android:layout_width="150dp"
         android:layout_height="210dp"
         android:layout_marginTop="7dp"
         app:cardElevation="1dp"
@@ -60,11 +61,11 @@
 
     <View
         android:id="@+id/view9"
-        android:layout_width="match_parent"
+        android:layout_width="400dp"
         android:layout_height="6dp"
-        android:layout_marginStart="-410dp"
-        android:layout_marginTop="225dp"
-        android:background="@color/purple_200"
+        android:layout_marginStart="-154dp"
+        android:layout_marginTop="220dp"
+        android:background="@drawable/linea_division"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"

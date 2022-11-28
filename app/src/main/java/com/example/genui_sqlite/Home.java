@@ -83,7 +83,6 @@ public class Home extends AppCompatActivity {
 
     public void Oficio(View view) {
         Intent oficio = new Intent(this, OficioActivity.class);
-        oficio.putExtra("iduser", (Integer) consulta);
         startActivity(oficio);
     }
 

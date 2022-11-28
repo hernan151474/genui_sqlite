@@ -18,10 +18,10 @@ public class AdapterPosteo extends RecyclerView.Adapter<AdapterPosteo.HolderReco
     //Variables
     private Context context;
     private ArrayList<ModelRecord> recordsList1;
-    LayoutInflater inflater;
+    //LayoutInflater inflater;
     //Constructor
     public AdapterPosteo(Context context, ArrayList<ModelRecord> recordsList1){
-        this.inflater = LayoutInflater.from(context);
+        this.context = context;
         this.recordsList1 = recordsList1;
     }
 
@@ -29,8 +29,8 @@ public class AdapterPosteo extends RecyclerView.Adapter<AdapterPosteo.HolderReco
     @Override
     public HolderRecord onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         //inflate layout
-        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view1 = inflater.inflate(R.layout.mis_posteos,parent,false);
+      //  LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+        View view1 = LayoutInflater.from(context).inflate(R.layout.mis_posteos,parent,false);
 
         return new HolderRecord(view1);
     }

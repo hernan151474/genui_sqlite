@@ -77,7 +77,7 @@ public class PosteoFragment extends Fragment  {
         posteo.setAdapter(adapterRecord);
 
         //Establecer el numero de Registros
-        //cantidad=dbHelper.getRecordsCountPosteo(consulta);
+        cantidad=dbHelper.getRecordsCountPosteo(consulta);
         //count.setText(String.valueOf(cantidad));
     }
 
