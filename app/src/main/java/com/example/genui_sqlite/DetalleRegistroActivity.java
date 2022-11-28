@@ -16,6 +16,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.genui_sqlite.DB.MyDbHelper;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.Calendar;
 import java.util.Locale;
@@ -37,6 +38,8 @@ public class DetalleRegistroActivity extends AppCompatActivity {
 
     //BDHelper
     private MyDbHelper dbHelper;
+    private FloatingActionButton borrado;
+    String estado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +51,8 @@ public class DetalleRegistroActivity extends AppCompatActivity {
 
         //obtener la identificación de registro del adaptador mediante la intención
         Intent intent = getIntent();
+        Bundle bundle = getIntent().getExtras();
+        int borrar = bundle.getInt("borrado");
         recordID = intent.getStringExtra("RECORD_ID");
 
         //Inicializacion BD Helper Clase
@@ -71,6 +76,21 @@ public class DetalleRegistroActivity extends AppCompatActivity {
         linkeTv = findViewById(R.id.linkeTv);
         addedTimeTv = findViewById(R.id.addedTimeTv);
         updatedTimeTv = findViewById(R.id.updateTimeTv);
+        borrado = findViewById(R.id.borrado);
+
+        if (borrar == 0) {
+            borrado.setVisibility(View.INVISIBLE);
+        } else if (borrar == 1) {
+            borrado.setVisibility(View.VISIBLE);
+            borrado.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    estado="0";
+                    dbHelper.Borrado("" +recordID,
+                            "" + estado);
+                }
+            });
+        }
 
         showRecordDetails();
     }

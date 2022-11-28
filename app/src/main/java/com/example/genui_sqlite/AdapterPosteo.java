@@ -88,6 +88,7 @@ public class AdapterPosteo extends RecyclerView.Adapter<AdapterPosteo.HolderReco
             public void onClick(View v) {
                 //Pass record id to next activity to show details of thet record
                 Intent intent = new Intent(context, DetalleRegistroActivity.class);
+                intent.putExtra("borrado",1);
                 intent.putExtra("RECORD_ID", id);
                 context.startActivity(intent);
             }

@@ -31,7 +31,7 @@ public class AdapterRecord extends RecyclerView.Adapter<AdapterRecord.HolderReco
     public HolderRecord onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         //inflate layout
         View view = LayoutInflater.from(context).inflate(R.layout.row_record, parent, false);
-        View view1 = LayoutInflater.from(context).inflate(R.layout.mis_posteos,parent,false);
+
 
         return new HolderRecord(view);
     }
@@ -45,6 +45,7 @@ public class AdapterRecord extends RecyclerView.Adapter<AdapterRecord.HolderReco
         ModelRecord model = recordsList.get(position);
         final String id = model.getId();
         String name = model.getName();
+        String id_user = model.getId_user();
         String regis = model.getRegis();
         String cate = model.getCate();
         String moda = model.getModa();
@@ -60,6 +61,7 @@ public class AdapterRecord extends RecyclerView.Adapter<AdapterRecord.HolderReco
         String linke = model.getLinke();
         String descri = model.getDescri();
         String image = model.getImage();
+        String estado =  model.getEstado();
         String addedTime = model.getAddedTime();
         String updatedTime = model.getUpdatedTime();
 

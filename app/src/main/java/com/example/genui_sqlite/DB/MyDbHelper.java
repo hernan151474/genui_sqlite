@@ -283,7 +283,7 @@ public class MyDbHelper extends SQLiteOpenHelper {
 
         ArrayList<ModelRecord> recordsList = new ArrayList<>();
         // consulta para seleccionar registros
-        String selectQuery = " SELECT * FROM " + Constants.TABLE_NAME + " WHERE " + Constants.C_NAME +  " LIKE '%" + query +"%'" + " AND " + Constants.C_REGIS + "=1" +"";
+        String selectQuery = " SELECT * FROM " + Constants.TABLE_NAME + " WHERE " + Constants.C_NAME +  " LIKE '%" + query +"%'" + " AND " + Constants.C_REGIS + "=1" + " AND " + Constants.C_ESTADO + "=1";
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
@@ -336,7 +336,7 @@ public class MyDbHelper extends SQLiteOpenHelper {
 
         ArrayList<ModelRecord> recordsList = new ArrayList<>();
         // consulta para seleccionar registros
-        String selectQuery = " SELECT * FROM " + Constants.TABLE_NAME + " WHERE " + Constants.C_NAME +  " LIKE '%" + query +"%'" + " AND " + Constants.C_REGIS + "=2" +"";
+        String selectQuery = " SELECT * FROM " + Constants.TABLE_NAME + " WHERE " + Constants.C_NAME +  " LIKE '%" + query +"%'" + " AND " + Constants.C_REGIS + "=2" + " AND " + Constants.C_ESTADO + "=1";
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
@@ -383,7 +383,7 @@ public class MyDbHelper extends SQLiteOpenHelper {
 
     //Obtener el numero de registros
     public int getRecordsCount(){
-        String countQuery = " SELECT * FROM " + Constants.TABLE_NAME + " WHERE " +Constants.C_REGIS + "=1" + " AND " +Constants.C_ESTADO+ "=1";
+        String countQuery = " SELECT * FROM " + Constants.TABLE_NAME + " WHERE " + Constants.C_REGIS + "=1" + " AND " + Constants.C_ESTADO + "=1";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(countQuery, null);
 
@@ -400,7 +400,7 @@ public class MyDbHelper extends SQLiteOpenHelper {
 
         ArrayList<ModelRecord> recordsList = new ArrayList<>();
         // consulta para seleccionar registros
-        String selectQuery = " SELECT * FROM " + Constants.TABLE_NAME + " WHERE " +Constants.C_REGIS + "=2" + " ORDER BY " + orderBy;
+        String selectQuery = " SELECT * FROM " + Constants.TABLE_NAME + " WHERE " + Constants.C_REGIS + "=2" + " AND " +Constants.C_ESTADO + "=1" + " ORDER BY " + orderBy;
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
@@ -448,7 +448,7 @@ public class MyDbHelper extends SQLiteOpenHelper {
 
 
     public int getRecordsCount1(){
-        String countQuery = " SELECT * FROM " + Constants.TABLE_NAME + " WHERE " +Constants.C_REGIS + "=2";
+        String countQuery = " SELECT * FROM " + Constants.TABLE_NAME + " WHERE " +Constants.C_REGIS + "=2" + " AND " + Constants.C_ESTADO + "=1";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(countQuery, null);
 
@@ -457,6 +457,14 @@ public class MyDbHelper extends SQLiteOpenHelper {
         cursor.close();
 
         return count;
+    }
+
+    public void Borrado(String id, String estado) {
+        SQLiteDatabase db =this.getWritableDatabase();
+        db.execSQL("UPDATE MY_RECORDS_TABLE SET ESTADO= ? WHERE ID=? ",new String[]{estado, id});
+        ContentValues values = new ContentValues();
+        values.put(Constants.C_ESTADO, estado);
+        db.close();
     }
 
 }

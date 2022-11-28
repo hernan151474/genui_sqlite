@@ -1,10 +1,13 @@
 package com.example.genui_sqlite.ui.posteo;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,10 +39,12 @@ public class PosteoFragment extends Fragment  {
 
     private FragmentPosteoBinding binding;
     private RecyclerView posteo;
+    private ImageButton borrar;
 
     TextView count;
     int consulta;
     int cantidad=0;
+
 
     private MyDbHelper dbHelper;
 
@@ -80,7 +85,6 @@ public class PosteoFragment extends Fragment  {
         cantidad=dbHelper.getRecordsCountPosteo(consulta);
         //count.setText(String.valueOf(cantidad));
     }
-
 
     @Override
     public void onDestroyView() {
