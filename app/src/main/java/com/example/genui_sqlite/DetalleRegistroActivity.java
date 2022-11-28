@@ -40,7 +40,7 @@ public class DetalleRegistroActivity extends AppCompatActivity {
 
     //BDHelper
     private MyDbHelper dbHelper;
-    private FloatingActionButton borrado;
+    private FloatingActionButton borrado, editar;
     String estado;
     int consulta;
 
@@ -81,21 +81,24 @@ public class DetalleRegistroActivity extends AppCompatActivity {
         addedTimeTv = findViewById(R.id.addedTimeTv);
         updatedTimeTv = findViewById(R.id.updateTimeTv);
         borrado = findViewById(R.id.borrado);
+        editar = findViewById(R.id.editar);
+
 
         if (borrar == 0) {
             borrado.setVisibility(View.INVISIBLE);
         } else if (borrar == 1) {
             borrado.setVisibility(View.VISIBLE);
+            editar.setVisibility(View.VISIBLE);
             borrado.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     estado="0";
                     dbHelper.Borrado("" +recordID,
                             "" + estado);
-                    Toast.makeText(DetalleRegistroActivity.this,"Se borro con exito!!", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(getApplicationContext(), Home.class);
+                    Intent intent = new Intent(getApplicationContext(), PosteoFragment.class);
                     intent.putExtra("home", (Integer) 1);
                     intent.putExtra("iduser", (Integer) consulta);
+                    Toast.makeText(DetalleRegistroActivity.this,"Se borro con exito!!", Toast.LENGTH_SHORT).show();
                     startActivity(intent);
                 }
             });

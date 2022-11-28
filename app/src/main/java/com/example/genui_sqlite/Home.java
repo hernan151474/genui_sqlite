@@ -125,7 +125,6 @@ public class Home extends AppCompatActivity {
     }
 
     public int getDataFragment(){
-
         return variable;
 
     }
