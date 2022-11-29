@@ -40,7 +40,7 @@ public class DetalleRegistroActivity extends AppCompatActivity {
 
     //BDHelper
     private MyDbHelper dbHelper;
-    private FloatingActionButton borrado, editar;
+    private FloatingActionButton borrado;
     String estado;
     int consulta;
 
@@ -81,14 +81,12 @@ public class DetalleRegistroActivity extends AppCompatActivity {
         addedTimeTv = findViewById(R.id.addedTimeTv);
         updatedTimeTv = findViewById(R.id.updateTimeTv);
         borrado = findViewById(R.id.borrado);
-        editar = findViewById(R.id.editar);
 
 
         if (borrar == 0) {
             borrado.setVisibility(View.INVISIBLE);
         } else if (borrar == 1) {
             borrado.setVisibility(View.VISIBLE);
-            editar.setVisibility(View.VISIBLE);
             borrado.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
